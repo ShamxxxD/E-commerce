@@ -8,6 +8,7 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const cors_1 = __importDefault(require("cors"));
 const database_1 = require("./config/database/database");
 const index_1 = __importDefault(require("./routes/index"));
+require('dotenv').config(); // Add this line to use dotenv
 const app = (0, express_1.default)();
 const port = 3000;
 (0, database_1.connectDatabase)();

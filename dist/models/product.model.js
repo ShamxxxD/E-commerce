@@ -13,7 +13,7 @@ const schema = new Schema({
     netWeight: String,
     discount: String,
     description: String,
-    sku: String,
+    sku: String
 });
 var Products = mongoose_1.default.model('Products', schema, 'products');
 exports.default = Products;
