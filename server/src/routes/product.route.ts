@@ -1,8 +1,13 @@
 import express from 'express';
+
 const router = express.Router();
 
-import ProductController from '../controllers/product.controller';
+import productController from '../controllers/product.controller';
+import categoryController from '../controllers/category.controller';
 
-router.use('/', ProductController.index);
+router.post('/', productController.createProduct);
+router.post('/create-category', categoryController.createCategory);
+router.get('/:slug', productController.getProductDetail);
+router.get('/', productController.getProducts);
 
 export default router;
