@@ -1,0 +1,70 @@
+@import '../base/variables';
+
+.header-top {
+    background: $accent-mark-color;
+}
+.header-marquee {
+    p {
+        padding: 0.5rem 0;
+        color: $white-color;
+        font-size: 1.4rem;
+        font-weight: 500;
+    }
+}
+
+.header-main {
+    background: $main-color;
+    .header-main-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 5rem;
+        color: $white-color;
+        padding: 0.5rem 0;
+
+        .header-search-box {
+            flex: 1;
+            display: flex;
+            align-items: center;
+
+            position: relative;
+            input {
+                flex: 1;
+                height: 4rem;
+                padding: 0rem 1.2rem 0rem 1rem;
+                border-radius: 0.6rem 0 0 0.6rem;
+                border: none;
+                outline: none;
+                &::placeholder {
+                    font-size: 1.5rem;
+                }
+            }
+
+            button {
+                height: 4rem;
+                width: 4rem;
+                border-radius: 0 0.6rem 0.6rem 0;
+                border: none;
+                svg {
+                    color: #333;
+                }
+            }
+        }
+
+        svg {
+            font-size: 3rem;
+            color: $white-color;
+        }
+
+        .header-account-box {
+            &::after {
+                border-right: 1px solid #ccc;
+            }
+        }
+
+        .header-account-box,
+        .header-cart-box {
+            text-align: center;
+        }
+    }
+}

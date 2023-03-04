@@ -3,12 +3,20 @@ import mongoose from 'mongoose';
 
 class ProductController {
     async getProducts(req: any, res: any) {
-        const category = req.query.category;
-        const products = await Product.find({ categories: category })
-            .populate({ path: 'categories' })
-            .exec();
+        try {
+            const categoryId = req.query.category;
+            let filter = {};
+            if (categoryId) {
+                filter = { categories: { $in: [req.query.category] } };
+            }
 
-        res.json({ data: products });
+            const products = await Product.find(filter).populate('categories');
+
+            res.json({ data: products });
+        } catch (error) {
+            console.log(error);
+            res.json({ data: [], message: 'Error' }).status(400);
+        }
     }
 
     async createProduct(req: any, res: any) {
@@ -40,12 +48,8 @@ class ProductController {
         const slug: string = req.params.slug;
 
         const products = await Product.findOne({ slug: slug });
-        res.json({ data: products });
-    }
-
-    async getCategoryProducts(req: any, res: any) {
-        const products = await Product.find({ category: req.query.category });
-        res.json({ data: products });
+        res.send('Hello Detail Page');
+        // res.json({ data: products });
     }
 }
 
